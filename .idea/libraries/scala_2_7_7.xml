@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="scala_2.7.7">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/project/plugins/lib_managed/scala_2.7.7/sbt-android-plugin-0.5.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/project/plugins/lib_managed/scala_2.7.7/proguard-4.4.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

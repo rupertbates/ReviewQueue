@@ -1,0 +1,4 @@
+#External Dependencies
+#Fri Feb 18 16:22:12 GMT 2011
+C\:\\Android\\android-sdk-windows\\platforms\\android-7\\android.jar=src\\main\\scala\\UnitTests.scala
+E\:\\Projects\\Android\\ReviewQueue\\project\\boot\\scala-2.8.1\\lib\\scala-library.jar=src\\main\\scala\\UnitTests.scala
