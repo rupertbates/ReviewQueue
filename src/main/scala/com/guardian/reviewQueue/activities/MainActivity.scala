@@ -10,7 +10,7 @@ class MainActivity extends Activity {
     super.onCreate(savedInstanceState)
     setContentView(new TextView(this) {
       val r = new Review("test")
-      setText(r.name)
+      setText(r.Title)
     })
   }
 }
