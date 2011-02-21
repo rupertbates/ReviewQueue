@@ -14,28 +14,12 @@ object MusicTypes {
   final val Soul: MusicTypes = new MusicTypes(8, "Soul")
   final val DanceMusic: MusicTypes = new MusicTypes(9, "dance", "Dance music")
   final val Unknown: MusicTypes = new MusicTypes(10, "Unknown", "Unknown", false)
+
+//  def apply(Id : Int, Name: String) = new MusicTypes(Id, Name, Name, false)
+//  def apply(Id : Int, Name: String, DisplayName: String) = new MusicTypes(Id, Name, DisplayName, false)
 }
 
-class MusicTypes extends Enumeration {
-  protected def this(id: Int, name: String) {
-    this ()
-    `this`(id, name, name, true)
-  }
-
-  protected def this(id: Int, name: String, displayName: String) {
-    this ()
-    `this`(id, name, displayName, true)
-  }
-
-  protected def this(id: Int, name: String, displayName: String, showInUI: Boolean) {
-    this ()
-    `super`(id, name, displayName, showInUI)
-  }
-
-  def this() {
-    this ()
-    Reviews = new ArrayList[Nothing]
-  }
-
-  var Reviews: List[Nothing] = null
+class MusicTypes(val Id : Int, val Name: String, val DisplayName: String, val ShowInUI: Boolean = true) extends Enumeration {
+  def this(Id : Int, Name : String) = this(Id, Name, Name)
+  var Reviews: List[Review] = new ArrayList[Review]
 }

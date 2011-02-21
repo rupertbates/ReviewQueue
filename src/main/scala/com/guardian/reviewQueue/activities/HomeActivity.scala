@@ -5,46 +5,42 @@ import android.os.Bundle
 import android.view.View
 import android.widget._
 import com.google.inject.Inject
-import com.reviewQueue.R
-import com.reviewQueue.adapters.ReviewAdapter
-import com.reviewQueue.model.Review
-import com.reviewQueue.model.ReviewTypes
-import com.reviewQueue.service.interfaces.IReviewFetcherService
+import com.guardian.reviewQueue.R
+import com.guardian.reviewQueue.model.Review
+import com.guardian.reviewQueue.model.ReviewTypes
 import roboguice.activity.RoboActivity
 import roboguice.activity.RoboListActivity
 import java.io.IOException
-import java.util.List
-import com.guardian.R
+import scala.collection.JavaConversions.asJavaList
 import com.guardian.reviewQueue.model.Review
+import com.reviewQueue.service.ReviewFetcherService
+import com.guardian.reviewQueue.adapters.ReviewAdapter
+import com.guardian.reviewQueue.service.ReviewConverterService
+import android.util.Log
 
-object HomeActivity {
-  private[activities] final val COUNTRIES:  Array[String] = Array[String]("England", "Scotland", "Northern Ireland", "Wales")
-}
-
-class HomeActivity extends RoboListActivity {
+class HomeActivity extends Activity {
+  var reviewFetcher: ReviewFetcherService = null
   /**Called when the activity is first created. */
-  @Override def onCreate(savedInstanceState: Bundle): Unit = {
+  override def onCreate(savedInstanceState: Bundle) = {
     super.onCreate(savedInstanceState)
+    reviewFetcher = new ReviewFetcherService(new ReviewConverterService())
     setContentView(R.layout.main)
     try {
-      var reviews: List[Review] = _reviewFetcher.getReviews(ReviewTypes.Unknown)
-      setListAdapter(new Nothing(this, reviews))
-      var lv = getListView
-      lv.setTextFilterEnabled(true)
-      lv.setOnItemClickListener(new Nothing {
-        def onItemClick(parent: Nothing, view: View, position: Int, id: Long): Unit = {
-          Toast.makeText(getApplicationContext, (view.asInstanceOf[Nothing]).getText, Toast.LENGTH_SHORT).show
-        }
-      })
+      var reviews: List[Review] = reviewFetcher.getReviews(ReviewTypes.Unknown)
+
+      val adapter = new ReviewAdapter(this, reviews)
+      val lv = findViewById(R.id.list).asInstanceOf[ListView]//getListView
+      lv setTextFilterEnabled true
+      lv setAdapter adapter
+      lv setOnItemClickListener adapter
+
     }
     catch {
       case ex: IOException => {
         val msg: String = ex.getMessage
+        Log.e("ReviewFetcher", ex.getMessage)
       }
     }
   }
-
-  @Inject private[activities] var _reviewFetcher: Nothing = null
-  @Inject private[activities] var _repository: Nothing = null
 }
 

@@ -1,42 +1,17 @@
 package com.guardian.reviewQueue.model
 
-object Enumeration {
-  def AbsoluteDifference(firstValue: Enumeration, secondValue: Enumeration): Int = {
-    return Math.abs(firstValue.Id - secondValue.Id)
-  }
-}
+trait Enumeration {
+  val Id: Int
+  val Name: String
+  val DisplayName: String
+  val ShowInUI: Boolean
 
-abstract class Enumeration extends Entity {
-  def this() {
-    this ()
-    `super`
-  }
+  def ToString = DisplayName
 
-  protected def this(id: Int, name: String) {
-    this ()
-    `this`(id, name, name, true)
-  }
-
-  protected def this(id: Int, name: String, displayName: String, showInUI: Boolean) {
-    this ()
-    Id = id
-    Name = name
-    DisplayName = displayName
-    ShowInUI = showInUI
-  }
-
-  def ToString: String = {
-    return DisplayName
-  }
+  def AbsoluteDifference(firstValue: Enumeration, secondValue: Enumeration): Int = Math.abs(firstValue.Id - secondValue.Id)
 
   def Equals(other: Enumeration): Boolean = {
-    if (other == null) {
-      return false
-    }
-    return Id == other.Id
+    if (other == null) return false
+    Id == other.Id
   }
-
-  var ShowInUI: Boolean = null
-  var Name: String = null
-  var DisplayName: String = null
 }

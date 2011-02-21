@@ -13,26 +13,13 @@ object ReviewTypes {
   final val Unknown: ReviewTypes = new ReviewTypes(7, "Unknown", "Unknown", false)
 }
 
-class ReviewTypes extends Enumeration {
-  protected def this(id: Int, name: String) {
-    this ()
-    `this`(id, name, name, true)
-  }
+class ReviewTypes(val Id: Int,
+                  val Name: String,
+                  val DisplayName: String,
+                  val ShowInUI: Boolean = true)
+  extends Enumeration {
 
-  protected def this(id: Int, name: String, displayName: String) {
-    this ()
-    `this`(id, name, displayName, true)
-  }
+  def this(Id: Int, Name: String) = this (Id, Name, Name)
 
-  protected def this(id: Int, name: String, displayName: String, showInUI: Boolean) {
-    this ()
-    `super`(id, name, displayName, showInUI)
-  }
-
-  def this() {
-    this ()
-    Reviews = new ArrayList[Nothing]
-  }
-
-  var Reviews: List[Nothing] = null
+  var Reviews: List[Review] = null
 }

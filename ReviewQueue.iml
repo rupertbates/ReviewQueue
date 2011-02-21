@@ -23,6 +23,12 @@
         <option name="GENERATE_UNSIGNED_APK" value="false" />
       </configuration>
     </facet>
+    <facet type="scala" name="Scala">
+      <configuration>
+        <option name="compilerLibraryLevel" value="Global" />
+        <option name="compilerLibraryName" value="scala-compiler-2.8.1" />
+      </configuration>
+    </facet>
   </component>
   <component name="NewModuleRootManager" inherit-compiler-output="false">
     <output url="file://$MODULE_DIR$/target/scala_2.8.1/classes" />
@@ -63,6 +69,15 @@
       </library>
     </orderEntry>
     <orderEntry type="library" scope="PROVIDED" name="scala_2.8.1" level="project" />
+    <orderEntry type="module-library" scope="PROVIDED">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib_managed/scala_2.8.1/test/scalatest-1.2.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
   </component>
 </module>
 

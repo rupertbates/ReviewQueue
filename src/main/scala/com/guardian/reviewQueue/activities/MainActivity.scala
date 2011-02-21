@@ -3,13 +3,13 @@ package com.guardian.reviewQueue.activities
 import _root_.android.app.Activity
 import _root_.android.os.Bundle
 import _root_.android.widget.TextView
-import com.guardian.reviewQueue.model.Review
+import com.guardian.reviewQueue.model.{ReviewTypes, Review}
 
 class MainActivity extends Activity {
   override def onCreate(savedInstanceState: Bundle) {
     super.onCreate(savedInstanceState)
     setContentView(new TextView(this) {
-      val r = new Review("test")
+      val r = new Review("test", ReviewType = ReviewTypes.Books)
       setText(r.Title)
     })
   }
