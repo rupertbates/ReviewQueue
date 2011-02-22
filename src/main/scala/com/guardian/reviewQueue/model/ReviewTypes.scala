@@ -20,6 +20,7 @@ class ReviewTypes(val Id: Int,
   extends Enumeration {
 
   def this(Id: Int, Name: String) = this (Id, Name, Name)
+  def this() = this(0, "")
 
   var Reviews: List[Review] = null
 }

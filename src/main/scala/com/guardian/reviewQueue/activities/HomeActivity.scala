@@ -26,14 +26,14 @@ class HomeActivity extends Activity {
     reviewFetcher = new ReviewFetcherService(new ReviewConverterService())
     setContentView(R.layout.main)
     try {
-      var reviews: List[Review] = reviewFetcher.getReviews(ReviewTypes.Unknown)
-
-      val adapter = new ReviewAdapter(this, reviews)
-      val lv = findViewById(R.id.list).asInstanceOf[ListView]//getListView
-      lv setTextFilterEnabled true
-      lv setAdapter adapter
-      lv setOnItemClickListener adapter
-
+      val reviews = reviewFetcher.getReviews(ReviewTypes.Unknown)
+      if (reviews.size > 0) {
+        val adapter = new ReviewAdapter(this, reviews)
+        val lv = findViewById(R.id.list).asInstanceOf[ListView] //getListView
+        lv setTextFilterEnabled true
+        lv setAdapter adapter
+        lv setOnItemClickListener adapter
+      }
     }
     catch {
       case ex: IOException => {

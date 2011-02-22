@@ -6,7 +6,7 @@ import java.util.List
 
 class ReviewQueueApplication extends RoboApplication {
   protected override def addApplicationModules(modules: List[Module]): Unit = {
-    //modules.add(new ReviewQueueModule)
+    modules.add(new ReviewQueueModule)
   }
 }
 

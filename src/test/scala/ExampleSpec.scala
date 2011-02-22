@@ -1,3 +1,5 @@
+package scala
+
 import org.scalatest.FeatureSpec
 import org.scalatest.GivenWhenThen
 import org.scalatest.matchers.MustMatchers

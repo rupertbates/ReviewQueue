@@ -8,16 +8,14 @@ package com.guardian.reviewQueue.model;
 
 import java.util.Date
 
-class Review(var Title: String,
+class Review(var Title: String = "",
   var StandFirst: String = "",
   var TrailText: String = "",
   var Body: String = "",
   var PublicationDate: Date = new Date(),
-  var ReviewType: ReviewTypes,
+  var ReviewType: ReviewTypes = ReviewTypes.Unknown,
   var StarRating: Int = 0,
   var WebUrl: String = "",
   var Thumbnail: String = "") extends Entity {
-
-
-
+  def this() = this("")
 }

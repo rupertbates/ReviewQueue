@@ -1,23 +1,13 @@
-/*
- * Created by IntelliJ IDEA.
- * User: rupert bates
- * Date: 18/02/11
- * Time: 16:02
- */
 package com.guardian.reviewQueue.service
 
-import com.google.gson.GsonBuilder
-import reflect.Type
-import com.google.gson.reflect.TypeToken
-import java.util.{List, Collection}
 import com.guardian.reviewQueue.model.Review
-
+import com.google.gson._
 class ReviewConverterService {
 
     def convertReviews(json : String ) : List[Review] =
     {
-        val collectionType = new TypeToken[Collection[Review]](){}.getType();
-        return ReviewConverterService.gson.fromJson(json, collectionType);
+      val reviews = ReviewConverterService.gson.fromJson(json, classOf[Array[Review]])
+      return reviews.toList
     }
 }
 object ReviewConverterService{
