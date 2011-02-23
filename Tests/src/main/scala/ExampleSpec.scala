@@ -1,4 +1,4 @@
-package scala
+package main.scala
 
 import org.scalatest.FeatureSpec
 import org.scalatest.GivenWhenThen

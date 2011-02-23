@@ -1,4 +1,4 @@
-package scala
+package main.scala
 
 import java.io._
 

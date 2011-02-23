@@ -17,13 +17,14 @@ import com.reviewQueue.service.ReviewFetcherService
 import com.guardian.reviewQueue.adapters.ReviewAdapter
 import com.guardian.reviewQueue.service.ReviewConverterService
 import android.util.Log
+import org.apache.http.impl.client.DefaultHttpClient
 
 class HomeActivity extends Activity {
   var reviewFetcher: ReviewFetcherService = null
   /**Called when the activity is first created. */
   override def onCreate(savedInstanceState: Bundle) = {
     super.onCreate(savedInstanceState)
-    reviewFetcher = new ReviewFetcherService(new ReviewConverterService())
+    reviewFetcher = new ReviewFetcherService(new DefaultHttpClient, new ReviewConverterService)
     setContentView(R.layout.main)
     try {
       val reviews = reviewFetcher.getReviews(ReviewTypes.Unknown)

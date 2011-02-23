@@ -1,15 +1,11 @@
-package scala
+package main.scala
 
-import com.google.gson.Gson
-import com.google.gson.GsonBuilder
-import org.junit.Assert
 import org.junit.Test
 import com.guardian.reviewQueue.model.{Review, ReviewTypes}
 import com.guardian.reviewQueue.service.ReviewConverterService
 import org.scalatest.junit.{JUnitSuite, ShouldMatchersForJUnit}
-import com.google.gson.reflect.TypeToken
 
-class GsonTests extends JUnitSuite with ShouldMatchersForJUnit {
+class ReviewConverterAndGsonTests extends JUnitSuite with ShouldMatchersForJUnit {
   @Test def can_serialize_and_deserialize_ReviewTypes: Unit = {
     val json = ReviewConverterService.gson.toJson(ReviewTypes.Books)
     val reviewType = ReviewConverterService.gson.fromJson(json, classOf[ReviewTypes])
